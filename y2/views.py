@@ -1,8 +1,10 @@
+from django.shortcuts import render
 from django.views.generic import ListView, DetailView , CreateView, UpdateView, DeleteView
 from rest_framework import viewsets, status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
+from .form import CustomerForm
 from .models import Student, Customer
 from .serializers import studentSerializer, customerSerializer
 
@@ -64,4 +66,34 @@ class CustomerViewSet(viewsets.ModelViewSet):
     queryset = Customer.objects.all()
     serializer_class = customerSerializer
 
+class CustomerListView(ListView):
+    model = Customer
+    template_name = 'customers_list.html'
+    context_object_name = 'customers'
+    fields = '__all__'
+class CustomerDetailView(DetailView):
+    model = Customer
+    template_name = 'customers_details.html'
+    context_object_name = 'customer'
+class CustomerCreateView(CreateView):
+    model = Customer
+    form_class = CustomerForm
+    template_name = 'customers_create.html'
+    context_object_name = 'customer'
+    success_url = "/cus"
+class CustomerUpdateView(UpdateView):
+    model = Customer
+    form_class = CustomerForm
+    template_name = 'customers_update.html'
+    context_object_name = 'customer'
+    success_url = '/cus'
+class CustomerDeleteView(DeleteView):
+    model = Customer
+    template_name = 'customers_delete.html'
+    context_object_name = 'customer'
+    success_url = "/cus"
+
+def cus_view(request):
+    customer =  Customer.objects.all()
+    return render(request, 'cus_view.html', {'customer': customer})
 

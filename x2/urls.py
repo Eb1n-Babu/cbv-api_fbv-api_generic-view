@@ -16,7 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from y2.views import  StudentViewSet , customer_list , customer_create, customer_detail , customer_delete , customer_update , CustomerViewSet
+from y2.views import StudentViewSet, customer_list, customer_create, customer_detail, customer_delete, customer_update, \
+    CustomerViewSet, cus_view
+from y2.views import CustomerListView,CustomerDetailView,CustomerCreateView,CustomerUpdateView,CustomerDeleteView
 
 
 urlpatterns = [
@@ -33,6 +35,15 @@ urlpatterns = [
     path('customer/', CustomerViewSet.as_view({'get': 'list', 'post': 'create'})),
     path('customer/<int:pk>', CustomerViewSet.as_view({'get': 'retrieve', 'put': 'update', 'delete': 'destroy'})),
 
+    path('cus/', CustomerListView.as_view(), name='customer_list'),
+    path('cus/<int:pk>', CustomerDetailView.as_view(), name='customers_details'),
+    path('cus/create/', CustomerCreateView.as_view(), name='customers_create'),
+    path('cus/<int:pk>/update', CustomerUpdateView.as_view(), name='customers_update'),
+    path('cus/<int:pk>/delete', CustomerDeleteView.as_view(), name='customers_delete'),
+
+    path('cus/<int:pk>/delete', CustomerDeleteView.as_view(), name='customers_delete'),
+
+    path('cust/',cus_view,name='cus_view'),
 
 
 ]
