@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from y2.views import StudentViewSet, customer_list, customer_create, customer_detail, customer_delete, customer_update, \
-    CustomerViewSet, cus_view
+    CustomerViewSet, cus_view ,cus_detail
 from y2.views import CustomerListView,CustomerDetailView,CustomerCreateView,CustomerUpdateView,CustomerDeleteView
 
 
@@ -44,6 +44,5 @@ urlpatterns = [
     path('cus/<int:pk>/delete', CustomerDeleteView.as_view(), name='customers_delete'),
 
     path('cust/',cus_view,name='cus_view'),
-
-
+    path('cust/<int:id>',cus_detail,name='cus_detail'),
 ]

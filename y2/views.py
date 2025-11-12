@@ -3,7 +3,6 @@ from django.views.generic import ListView, DetailView , CreateView, UpdateView, 
 from rest_framework import viewsets, status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-
 from .form import CustomerForm
 from .models import Student, Customer
 from .serializers import studentSerializer, customerSerializer
@@ -97,3 +96,10 @@ def cus_view(request):
     customer =  Customer.objects.all()
     return render(request, 'cus_view.html', {'customer': customer})
 
+
+def cus_detail(request, id):
+    try:
+        customer = Customer.objects.get(id=id)
+        return render(request, 'cus_detail.html', {'customer': customer})
+    except Customer.DoesNotExist:
+        return render(request, '404.html', status=404)
