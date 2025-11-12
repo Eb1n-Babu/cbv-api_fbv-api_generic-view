@@ -1,5 +1,5 @@
 """
-WSGI config for x2 project.
+WSGI config for generic-cb_fb_api-views project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'x2.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'generic-cb_fb_api-views.settings')
 
 application = get_wsgi_application()

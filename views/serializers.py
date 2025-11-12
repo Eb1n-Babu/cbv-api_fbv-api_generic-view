@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from y2.models import Student , Customer
+from views.models import Student , Customer
 
 
 class studentSerializer(serializers.ModelSerializer):

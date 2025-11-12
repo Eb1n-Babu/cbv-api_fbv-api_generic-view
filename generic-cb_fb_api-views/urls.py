@@ -16,9 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from y2.views import StudentViewSet, customer_list, customer_create, customer_detail, customer_delete, customer_update, \
+from views.views import StudentViewSet, customer_list, customer_create, customer_detail, customer_delete, customer_update, \
     CustomerViewSet, cus_view ,cus_detail
-from y2.views import CustomerListView,CustomerDetailView,CustomerCreateView,CustomerUpdateView,CustomerDeleteView
+from views.views import CustomerListView,CustomerDetailView,CustomerCreateView,CustomerUpdateView,CustomerDeleteView
 
 
 urlpatterns = [

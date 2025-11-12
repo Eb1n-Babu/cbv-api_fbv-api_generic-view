@@ -1,6 +1,6 @@
 from django import forms
 
-from y2.models import Customer
+from views.models import Customer
 
 
 class CustomerForm(forms.ModelForm):
