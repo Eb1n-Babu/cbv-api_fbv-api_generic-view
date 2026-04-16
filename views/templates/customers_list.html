@@ -6,9 +6,16 @@
 </head>
 <body>
 <div>
-    <h1>{% for el in customers %}</h1>
-    <li>{{ el }}</li>
-    {% endfor %}
+    <h1>Customers</h1>
+    <ol>
+        {% for el in customers %}
+            <li>
+                <a href="{% url 'customers_details' el.pk %}">{{ el }}</a>
+            </li>
+        {% empty %}
+            <li>No customers found.</li>
+        {% endfor %}
+    </ol>
 </div>
 </body>
 </html>
